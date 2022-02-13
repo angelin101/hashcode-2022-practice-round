@@ -5,6 +5,7 @@ import com.hashcode.practice.service.Runner;
 import com.hashcode.practice.service.Writer;
 
 public class Main {
+//Андрей хулиган ;))
     public static void main(String[] args) {
         // 1. read and parse input
         Reader reader = new Reader();
