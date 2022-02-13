@@ -24,3 +24,8 @@ hs_err_pid*
 /.idea/
 /.gradle/
 /build/
+/output_a_.txt
+/output_b_.txt
+/output_c_.txt
+/output_d_.txt
+/output_e_.txt

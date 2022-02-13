@@ -7,11 +7,9 @@ import java.io.IOException;
 
 public class Writer {
 
-    public static final String OUTPUT_FILENAME = "output.txt";
+    public void write(Pizza pizza, String filename) {
 
-    public void write(Pizza pizza) {
-
-        try (FileWriter writer = new FileWriter(OUTPUT_FILENAME)) {
+        try (FileWriter writer = new FileWriter(filename)) {
             writer.write(pizza.toString());
         } catch (IOException e) {
             System.err.println("Failed while writing output: " + e);
