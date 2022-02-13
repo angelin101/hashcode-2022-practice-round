@@ -4,6 +4,7 @@ import com.hashcode.practice.model.Client;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,9 +16,9 @@ import java.util.stream.Stream;
 
 public class Reader {
 
-    public List<Client> read() {
+    public List<Client> read(String path) {
         List<Client> clients = new ArrayList<>();
-        try (Stream<String> stream = Files.lines(Paths.get("/Users/user/Documents/Learning/HashCodeCompetetion/Practice/hashcode-2022/src/main/resources/inputData/b_.txt"))) {
+        try (Stream<String> stream = Files.lines(Paths.get(path))) {
             List<String> lines = stream.collect(Collectors.toList());
 
             for (int i = 1; i < lines.size() - 1; i += 2) {
@@ -26,7 +27,6 @@ public class Reader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(clients);
         return clients;
     }
 
