@@ -16,6 +16,6 @@ public class Main {
 
         // 3. Write output data
         Writer writer = new Writer();
-        writer.write();
+        writer.write(null);
     }
 }
