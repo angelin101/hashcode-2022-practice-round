@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Runner {
 
     public Pizza run(List<Client> clients) {
-        Pizza result = new Pizza(getPizzaIngredients1(clients));
+        Pizza result = new Pizza(getPizzaIngredients2(clients));
 
         // verification step might be skipped
         checkResult(clients, result);
@@ -52,7 +53,34 @@ public class Runner {
 
     // 2 ... (if liked LESS than disliked)
     private List<String> getPizzaIngredients2(List<Client> clients) {
+        // w/o dislikes
+        List<Client> mostSatisfiedClients = clients.stream()
+                .filter(c -> c.getDislikes().isEmpty())
+                .collect(Collectors.toList());
 
-        return null;
+        // w/ at least 1 dislike
+        List<Client> dissatisfiedClients = new ArrayList<>(clients);
+        dissatisfiedClients.removeAll(mostSatisfiedClients);
+
+        List<String> dislikes = new ArrayList<>();
+        for (Client client : dissatisfiedClients) {
+            dislikes.addAll(client.getDislikes());
+        }
+
+        int averageNumberDislikes = dislikes.size() / dissatisfiedClients.size();
+        System.out.println("DISLIKES: " + dislikes.size());
+        System.out.println("DISSATISFIED: " + dissatisfiedClients.size());
+        System.out.println("AVERAGE: " + averageNumberDislikes);
+
+        List<Client> moreSatisfiedClients = new ArrayList<>();
+
+        for (Client client : dissatisfiedClients) {
+            if (client.getDislikes().size() < averageNumberDislikes) {
+                moreSatisfiedClients.add(client);
+            }
+        }
+
+        moreSatisfiedClients.addAll(mostSatisfiedClients);
+        return getPizzaIngredients1(moreSatisfiedClients);
     }
 }

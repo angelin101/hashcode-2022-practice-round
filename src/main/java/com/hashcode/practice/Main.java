@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         String mainPath = "src/main/resources/inputData/";
-        List<String> paths = Arrays.asList(mainPath + "a_.txt", mainPath + "b_.txt", mainPath + "c_.txt",
+        List<String> paths = Arrays.asList(mainPath + "a_.txt", mainPath + "c_.txt",
                 mainPath + "d_.txt", mainPath + "e_.txt");
 
         paths.forEach(p -> {
