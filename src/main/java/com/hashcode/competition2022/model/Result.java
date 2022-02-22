@@ -10,6 +10,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Result {
-    public List<String>
-            resultData;
+    public List<String> resultData;
 }
